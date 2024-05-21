@@ -1,14 +1,24 @@
 <?php
 require_once '/opt/lampp/htdocs/bookworm/backend/Model/AddressModel.php';
+require_once '/opt/lampp/htdocs/bookworm/backend/Helper/HelperClass.php';
 
-class AddressController {
+interface AddressControllerInterface {
+    public function getUserAddress($userId);
+    public function addAddress($userId, $addressLine1, $addressLine2, $city, $pincode, $country);
+    public function deleteAddress($addressId);
+    public function editAddress($addressId, $addressLine1, $addressLine2, $city, $pincode, $country);
+    public function handleRequest();
+}
+
+
+class AddressController implements AddressControllerInterface {
     
     public function __construct() {
         // Allow from any origin
         if (isset($_SERVER['HTTP_ORIGIN'])) {
             header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
             header('Access-Control-Allow-Credentials: true');
-            header('Access-Control-Max-Age: 86400');    // cache for 1 day
+            header('Access-Control-Max-Age: 86400');    
         }
 
         // Access-Control headers are received during OPTIONS requests

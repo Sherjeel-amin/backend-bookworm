@@ -68,9 +68,9 @@ class UserModel {
             // Verify password
             if ($user && password_verify($password, $user['password_hash'])) {
                 return true; // User authenticated successfully
-            } else {
+            }  
                 return false; // Invalid email or password
-            }
+            
         } catch (PDOException $e) {
             // Handle exceptions
             throw new Exception("Error authenticating user: " . $e->getMessage());

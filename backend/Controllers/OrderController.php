@@ -19,16 +19,14 @@ class OrderController {
             $post_data = file_get_contents("php://input");
 
             if (!empty($post_data)) {
-             
-                $data = json_decode($post_data, true);
 
+                $data = json_decode($post_data, true);
          
                 $userId = $data['userId'];
                 $addressData = json_encode($data['addressData']);
                 $cartItems = json_encode($data['cartItems']);
                 $totalAmount = $data['totalAmount'];
 
-               
                 $result = $this->orderModel->insertOrder($userId, $addressData, $cartItems,$totalAmount);
 
               
@@ -56,3 +54,6 @@ class OrderController {
 
 $database = new Database();
 $pdo = $database->getConnection();
+
+
+

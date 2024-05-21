@@ -1,5 +1,4 @@
 <?php
-
 require_once '/opt/lampp/htdocs/bookworm/backend/Model/BookModel.php';
 
 class BookController {

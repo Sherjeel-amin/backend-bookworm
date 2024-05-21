@@ -8,7 +8,7 @@ foreach ($keywords as $keyword) {
 
         switch ($keyword) {
             case '/books':
-
+                
                 require_once '/opt/lampp/htdocs/bookworm/backend/Controllers/BookController.php';
                 $bookController = new BookController($conn);
                 $bookController->getBooks();
